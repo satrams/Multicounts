@@ -1,0 +1,8 @@
+> Go to github
+> sign into your account
+> go to settings
+> go to 'SSH and GPG keys'
+> hit 'New SSH key'
+> give it any name (usually it's good to give it a name based on the computer it's being used in)
+> copy the PUBLIC key (should be listed in your .ssh folder as having the .pub extension)
+> click add key
