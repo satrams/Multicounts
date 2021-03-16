@@ -67,18 +67,11 @@ ssh-add %user%/.ssh/%idName%
 ::
 set /p account=Enter the account you want to add:
 ::checks to see if the file 'config' exists. If not, it will use the default config section, otherwise it uses the version that is meant for appending to the original config
-if exist "%user%\.ssh/config" (
-  echo # Account extra (work or personal)>> %user%\.ssh/config
-  echo Host github-%account%>> %user%\.ssh/config
-  echo  HostName github.com>> %user%\.ssh/config
-  echo  User git>> %user%\.ssh/config
-  echo  IdentityFile %user%\.ssh/%idName%>> %user%/.ssh/config
+::for some reason this didn't work when it was implemented the other way around. Might require more testing
+if not exist "%user%\.ssh\config" (
+  echo # Account default (work or personal)> %user%\.ssh/config & echo Host github.com>> %user%\.ssh/config & echo  HostName github.com>> %user%\.ssh/config & echo  User git>> %user%\.ssh/config & echo  IdentityFile %user%\.ssh/%idName%>> %user%\.ssh/config
 ) else (
-  echo # Account default (work or personal)> %user%\.ssh/config
-  echo Host github.com>> %user%\.ssh/config
-  echo  HostName github.com>> %user%\.ssh/config
-  echo  User git>> %user%\.ssh/config
-  echo  IdentityFile %user%\.ssh/%idName%>> %user%\.ssh/config
+  echo # Account extra (work or personal)>> %user%\.ssh/config & echo Host github-%account%>> %user%\.ssh/config & echo  HostName github.com>> %user%\.ssh/config & echo  User git>> %user%\.ssh/config & echo  IdentityFile %user%\.ssh/%idName%>> %user%/.ssh/config
 )
 
 echo key has been added and configured
