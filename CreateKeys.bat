@@ -57,7 +57,7 @@ pause
 ::
 ::Section 2: adding the keys
 ::
-set /p idName=Enter the name of the key that you just used:
+set /p idName=Enter the name of the key that you just used (ex: 'id_rsa) Don't put the actual key here, just the name of the file:
 
 
 ssh-add %user%/.ssh/%idName%
