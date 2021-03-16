@@ -1,5 +1,7 @@
 @echo off
 
+setlocal enabledelayedexpansion
+
 if not defined in_subprocess (cmd /k set in_subprocess=y ^& %0 %*) & exit )
 
 :: BatchGotAdmin
@@ -30,7 +32,19 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 
 
+::
+::first time setup
+::
+set configPath= C:\
+if not exist %~dp0config.txt (
+  echo EXECUTING FIRST TIME SETUP...
+  set /p configPath= set path ssh keys will be generated in usually in C:\Users\YOU_USER_NAME_HERE don't put a slash at the end:
+  echo !configPath!> %~dp0config.txt
+  echo path set
+)
 
+
+echo INITIALIZING SSH-AGENT SERVICE..
 
 ::
 ::initialization step
