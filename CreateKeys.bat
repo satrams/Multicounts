@@ -85,7 +85,7 @@ set /p account=Enter the account you want to add:
 if not exist "%user%\.ssh\config" (
   echo # Account default (work or personal)> %user%\.ssh/config & echo Host github.com>> %user%\.ssh/config & echo  HostName github.com>> %user%\.ssh/config & echo  User git>> %user%\.ssh/config & echo  IdentityFile %user%\.ssh/%idName%>> %user%\.ssh/config
 ) else (
-  echo # Account extra (work or personal)>> %user%\.ssh/config & echo Host github-%account%>> %user%\.ssh/config & echo  HostName github.com>> %user%\.ssh/config & echo  User git>> %user%\.ssh/config & echo  IdentityFile %user%\.ssh/%idName%>> %user%/.ssh/config
+  echo # Account extra (work or personal)>> %user%\.ssh/config & echo Host github-%account%>> %user%\.ssh/config & echo  HostName github.com>> %user%\.ssh/config & echo  User git>> %user%\.ssh/config & echo  PreferredAuthentications publickey & echo  IdentityFile %user%\.ssh/%idName%>> %user%/.ssh/config
 )
 
 echo key has been added and configured
